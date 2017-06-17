@@ -32,7 +32,9 @@ do
             then
                 #echo "files are identical"
                 #stat $f
+                echo "----------------------------------------------"
                 echo "Saving $f to local_version"
+                echo "----------------------------------------------"
                 mkdir -p $DIRNAME/$LOCALDIR
                 cp -f $2 $DIRNAME/$LOCALDIR/$NAME
             fi
