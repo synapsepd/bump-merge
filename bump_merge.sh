@@ -23,7 +23,7 @@ do
         #echo $DIRNAME/$LOCALDIR
         if [ "$2" != "$NAME" ]
         then
-            echo "Processing $f:"
+            #echo "Processing $f:"
             if cmp --silent $2 $f 
             then
                 #echo "files are identical"
