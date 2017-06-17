@@ -7,8 +7,12 @@ echo "Merging using bump_merge.sh"
 #ls -la
 #FILES=`find -not \( -path '*/local_version/*' -prune \) -not \( -path ./.git -prune \) -a -type f -print`
 
+# Get the name of the current branch
+BRANCH=`git rev-parse --abbrev-ref HEAD`
+#echo $BRANCH
+
 # Get a list of the files in conflict
-FILES=`git diff --name-only origin/master`
+FILES=`git diff --name-only origin/$BRANCH`
 
 # Find the local version of this particular file and move it to a local version folder
 LOCALDIR=local_version
