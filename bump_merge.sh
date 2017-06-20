@@ -1,3 +1,4 @@
+#!/bin/bash
 # I want to keep the server's version when there is a conflict
 # %O (the first parameter) contains the ancestor version
 # %A (the second parameter) contains my "our" version
@@ -18,7 +19,7 @@ FILES=`git diff --name-only origin/$BRANCH`
 LOCALDIR=local_version
 for f in $FILES
 do
-    if [[ -f $f ]]
+    if [ -f $f ]
     then
         NAME=$(basename $f)
         DIRNAME=$(dirname $f)
