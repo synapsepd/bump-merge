@@ -1,10 +1,17 @@
 # Installation
-1. Copy `bump_merge.sh` to a folder in the system path
-2. Run `merge_config.bat`to set the merge drivers in global `.gitconfig` file
+## Windows
+1. Clone or download the repository
+2. Right click `install.bat` and select `Run as administrator`
 3. Add `local_version/` to the `.gitignore` file of your repository
 4. Add `* binary merge=bump` to the `.gitattributes` file in your repository
+5. Restart any command windows to enable the new PATH environment variable
 
-Remember, if you updated your path, you will need to restart the command prompt window
+## Linux/Mac
+1. Clone or download the repository
+2. Change to the installation directory
+3. Run `$ sudo ./install.sh`
+4. Add `local_version/` to the `.gitignore` file of your repository
+5. Add `* binary merge=bump` to the `.gitattributes` file in your repository
 
 # How does it work?
 Let's say you forgot to pull from GitLab before starting to edit local files. OK, you would never do that. Let's say some nefarious person decided to edit and commit a new version of a file that you are currently working on. In your innocence, you add your changes, commit them, and attempt to push them to the server. To your chagrin, you are presented with an error that says conflicts exist and you must pull before you can push! What did that person do?!?! What will happen to your files when you pull?!?! Will they be automatically merged? Will Git ask you to resolve the conflicts? Will your local copy be deleted and replaced with the server's copy? Sweat beads on your brow and you start making backups of all you files... but wait! Bump merge can help you!
@@ -14,7 +21,7 @@ If you have installed bump merge as described above, your files are always safe.
 2. Git sees that the conflicting file matches the pattern, because `*` matches everything.
 3. The entry in `.gitattributes` tells Git that this is a binary file, which is important so Git doesn't start changing line endings and other stuff that a conventional merge would want to do.
 4. The entry also says to use the `bump` merge driver, but where is that?
-5. The `.gitconfig` file has an entry that was created when you ran `merge_confg.bat` that tells Git to run `bump_merge.sh`.
+5. The `.gitconfig` file has an entry that was created when you ran the installation script that tells Git to run `bump_merge.sh`.
 6. Git finds `bump_merge.sh` because it is in your system path.
 7. `bump_merge` is a bash script, but Git runs it with Git Bash on Windows.
 8. When `bump_merge.sh` runs, it is passed temporary filenames that refer to the original (.merge_aXXXXX), local (.merge_bXXXXX), and incomming (.merge_cXXXXX) versions of the file to be merged.
