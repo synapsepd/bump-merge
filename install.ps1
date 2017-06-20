@@ -1,4 +1,13 @@
 $dest = "C:\ProgramData\Synapse\bump-merge"
+
+New-Item -ItemType Directory -Force -Path $dest
+
+$sourcedir = Split-Path -Path $MyInvocation.MyCommand.Path
+$sourcepath = $sourcedir + "\bump_merge.sh"
+
+Copy-Item -Force $sourcepath -Destination "$dest"
+
+
 $oldpath = (Get-ItemProperty -Path "Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment" -Name PATH).path
 if ( $oldpath.ToLower().Split(";") -notcontains $dest.ToLower() ) { 
     $newpath = "$oldpath$dest;"
