@@ -8,6 +8,9 @@ Copy-Item -Force $sourcepath -Destination "$dest"
 # Add the merge driver location to the system path
 $oldpath = (Get-ItemProperty -Path "Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment" -Name PATH).path
 if ( $oldpath.ToLower().Split(";") -notcontains $dest.ToLower() ) { 
+    if ( $oldpath.Substring($oldpath.Length-1) -ne ";") {
+        $oldpath = "$oldpath;"
+        }
     $newpath = "$oldpath$dest;"
     #Write-Host $newpath     
     Set-ItemProperty -Path "Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment" -Name PATH -Value $newpath
