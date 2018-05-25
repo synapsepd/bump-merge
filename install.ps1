@@ -1,5 +1,6 @@
+
 # Copy the merge driver scripts into ProgramData
-$dest = "C:\ProgramData\Synapse\bump-merge"
+$dest = $Env:ProgramData + "\Synapse\bump-merge"
 New-Item -ItemType Directory -Force -Path $dest
 $sourcedir = Split-Path -Path $MyInvocation.MyCommand.Path
 $sourcepath = $sourcedir + "\bump_merge.sh"
