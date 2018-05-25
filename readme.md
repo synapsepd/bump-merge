@@ -8,9 +8,9 @@ Bump-merge solves that problem for you. When you pull from a remote, and there a
 1. Clone or download the repository
 2. Right click `install.bat` and select `Run as administrator`
 3. Add `local_version/` to the `.gitignore` file of your repository
-4. For binary files: Add `*.bin binary merge=bump` to the `.gitattributes` file in your repository 
+4. For binary files: Add `*.bin binary merge=bump` to the `.gitattributes` file in your repository  
     (Replace .bin with your binary extension)
-5. For LFS files: Add `*.bin filter=lfs diff=lfs merge=bump-lfs -text` to the `.gitattributes` file in your repository 
+5. For LFS files: Add `*.bin filter=lfs diff=lfs merge=bump-lfs -text` to the `.gitattributes` file in your repository  
     (Replace .bin with your binary extension)
 6. Restart any command windows to enable the new PATH environment variable
 
@@ -19,9 +19,9 @@ Bump-merge solves that problem for you. When you pull from a remote, and there a
 2. Change to the installation directory
 3. Run `$ sudo ./install.sh`
 4. Add `local_version/` to the `.gitignore` file of your repository
-5. For binary files: Add `*.bin binary merge=bump` to the `.gitattributes` file in your repository 
+5. For binary files: Add `*.bin binary merge=bump` to the `.gitattributes` file in your repository  
     (Replace .bin with your binary extension)
-6. For LFS files: Add `*.bin filter=lfs diff=lfs merge=bump-lfs -text` to the `.gitattributes` file in your repository 
+6. For LFS files: Add `*.bin filter=lfs diff=lfs merge=bump-lfs -text` to the `.gitattributes` file in your repository  
     (Replace .bin with your binary extension)
 
 # How does it work?
