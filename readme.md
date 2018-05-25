@@ -8,15 +8,21 @@ Bump-merge solves that problem for you. When you pull from a remote, and there a
 1. Clone or download the repository
 2. Right click `install.bat` and select `Run as administrator`
 3. Add `local_version/` to the `.gitignore` file of your repository
-4. Add `* binary merge=bump` to the `.gitattributes` file in your repository
-5. Restart any command windows to enable the new PATH environment variable
+4. For binary files: Add `*.bin binary merge=bump` to the `.gitattributes` file in your repository 
+    (Replace .bin with your binary extension)
+5. For LFS files: Add `*.bin filter=lfs diff=lfs merge=bump-lfs -text` to the `.gitattributes` file in your repository 
+    (Replace .bin with your binary extension)
+6. Restart any command windows to enable the new PATH environment variable
 
 ## Linux/Mac
 1. Clone or download the repository
 2. Change to the installation directory
 3. Run `$ sudo ./install.sh`
 4. Add `local_version/` to the `.gitignore` file of your repository
-5. Add `* binary merge=bump` to the `.gitattributes` file in your repository
+5. For binary files: Add `*.bin binary merge=bump` to the `.gitattributes` file in your repository 
+    (Replace .bin with your binary extension)
+6. For LFS files: Add `*.bin filter=lfs diff=lfs merge=bump-lfs -text` to the `.gitattributes` file in your repository 
+    (Replace .bin with your binary extension)
 
 # How does it work?
 Let's say you forgot to pull from GitLab before starting to edit local files. OK, you would never do that. Let's say some nefarious person decided to edit and commit a new version of a file that you are currently working on. In your innocence, you add your changes, commit them, and attempt to push them to the server. To your chagrin, you are presented with an error that says conflicts exist and you must pull before you can push! What did that person do?!?! What will happen to your files when you pull?!?! Will they be automatically merged? Will Git ask you to resolve the conflicts? Will your local copy be deleted and replaced with the server's copy? Sweat beads on your brow and you start making backups of all you files... but wait! Bump merge can help you!
