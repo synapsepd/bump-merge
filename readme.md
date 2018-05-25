@@ -44,6 +44,35 @@ If you have installed bump merge as described above, your files are always safe.
 14. Add, commit, and push your changes as usual.
 15. Adding `local_version/` to the `.gitignore` file in your repository keeps you from checking in your local copies.
 
+# Try it before you buy it!
+After installing bump-merge you can test it out on a test repository using the `create_conflict.sh` script.
+1. Create a remote repository
+2. Add the following to the repository's `.gitattributes` file
+~~~~
+*.bin binary merge=bump
+*.lfs filter=lfs diff=lfs merge=bump-lfs -text
+~~~~
+3. Add the following to the repository's `.gitignore` file
+~~~~
+local_version/
+~~~~
+4. Open a bash shell (Git Bash on Windows)
+5. Copy `create_conflict.sh` to the location you want to perform the test
+6. Copy the repository's URL
+7. Test the `bump` driver using the command
+~~~~
+./create_conflict.sh bin <repo URL>
+~~~~
+8. Test the `bump-lfs` driver using the command
+~~~~
+./create_conflict.sh lfs <repo URL>
+~~~~
 
-
-
+## How create_conflicts.sh works
+1. Makes two clones of the remote repository you specified called (A and B).
+2. Moves into A and creates several files with the extension you specified
+3. Adds, commits, and pushes the changes to A
+4. Moves into B and creates conflicting files with the extension you specified
+5. Adds and commits the conflicting files
+6. Pulls from the remote, which causes Git to use the specified merge driver
+7. The merge should succeed and you should find that the conflicting versions created in `B` have been moved into the `local_version` subdirectories within the repository 
