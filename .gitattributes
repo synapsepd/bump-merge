@@ -1,1 +1,5 @@
-* binary merge=bump
+# Use an attribute like this to track a file as binary with bump-merge
+# *.bin binary merge=bump
+
+# Use an attribute like this to track a file using LFS with bump-merge for LFS
+# *.bin filter=lfs diff=lfs merge=bump-lfs -text
